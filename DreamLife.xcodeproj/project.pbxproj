@@ -7,15 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		252B39EDFDC76153475B1F5E /* Pods_DreamLife.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64AD2B4F72C7596ADF235131 /* Pods_DreamLife.framework */; };
 		8BB50EFE2AE9F9C400DA148B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB50EFD2AE9F9C400DA148B /* AppDelegate.swift */; };
 		8BB50F002AE9F9C400DA148B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB50EFF2AE9F9C400DA148B /* SceneDelegate.swift */; };
 		8BB50F022AE9F9C400DA148B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB50F012AE9F9C400DA148B /* ViewController.swift */; };
 		8BB50F052AE9F9C400DA148B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BB50F032AE9F9C400DA148B /* Main.storyboard */; };
 		8BB50F072AE9F9C600DA148B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BB50F062AE9F9C600DA148B /* Assets.xcassets */; };
 		8BB50F0A2AE9F9C600DA148B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BB50F082AE9F9C600DA148B /* LaunchScreen.storyboard */; };
+		8BB50F182AEA512900DA148B /* GSConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB50F172AEA512900DA148B /* GSConst.swift */; };
+		8BB50F1A2AEA554B00DA148B /* HomeFundCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB50F192AEA554B00DA148B /* HomeFundCell.swift */; };
+		8BB50F1C2AEA604D00DA148B /* FundModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB50F1B2AEA604D00DA148B /* FundModel.swift */; };
+		8BB50F1E2AEA670200DA148B /* FundAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB50F1D2AEA670200DA148B /* FundAddViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		64AD2B4F72C7596ADF235131 /* Pods_DreamLife.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DreamLife.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB50EFA2AE9F9C400DA148B /* DreamLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB50EFD2AE9F9C400DA148B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BB50EFF2AE9F9C400DA148B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +30,12 @@
 		8BB50F062AE9F9C600DA148B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8BB50F092AE9F9C600DA148B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8BB50F0B2AE9F9C600DA148B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8BB50F172AEA512900DA148B /* GSConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GSConst.swift; path = "../../../../../PudongNews-iOS/PudongNews/GSConst.swift"; sourceTree = "<group>"; };
+		8BB50F192AEA554B00DA148B /* HomeFundCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFundCell.swift; sourceTree = "<group>"; };
+		8BB50F1B2AEA604D00DA148B /* FundModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundModel.swift; sourceTree = "<group>"; };
+		8BB50F1D2AEA670200DA148B /* FundAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundAddViewController.swift; sourceTree = "<group>"; };
+		B92227B089080636048C675C /* Pods-DreamLife.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DreamLife.debug.xcconfig"; path = "Target Support Files/Pods-DreamLife/Pods-DreamLife.debug.xcconfig"; sourceTree = "<group>"; };
+		C79948F88753CB91647276E5 /* Pods-DreamLife.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DreamLife.release.xcconfig"; path = "Target Support Files/Pods-DreamLife/Pods-DreamLife.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				252B39EDFDC76153475B1F5E /* Pods_DreamLife.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +55,8 @@
 			children = (
 				8BB50EFC2AE9F9C400DA148B /* DreamLife */,
 				8BB50EFB2AE9F9C400DA148B /* Products */,
+				EDF3CE415917F82A69846E96 /* Pods */,
+				BFE2F161CCC6FA8B46D2F90C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +71,84 @@
 		8BB50EFC2AE9F9C400DA148B /* DreamLife */ = {
 			isa = PBXGroup;
 			children = (
+				8BB50F162AEA4B0900DA148B /* Utility */,
+				8BB50F112AEA4ACC00DA148B /* Sections */,
 				8BB50EFD2AE9F9C400DA148B /* AppDelegate.swift */,
+				8BB50F172AEA512900DA148B /* GSConst.swift */,
 				8BB50EFF2AE9F9C400DA148B /* SceneDelegate.swift */,
-				8BB50F012AE9F9C400DA148B /* ViewController.swift */,
 				8BB50F032AE9F9C400DA148B /* Main.storyboard */,
 				8BB50F062AE9F9C600DA148B /* Assets.xcassets */,
 				8BB50F082AE9F9C600DA148B /* LaunchScreen.storyboard */,
 				8BB50F0B2AE9F9C600DA148B /* Info.plist */,
 			);
 			path = DreamLife;
+			sourceTree = "<group>";
+		};
+		8BB50F112AEA4ACC00DA148B /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				8BB50F122AEA4ADA00DA148B /* Home */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		8BB50F122AEA4ADA00DA148B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				8BB50F152AEA4AF800DA148B /* Controllers */,
+				8BB50F142AEA4AF000DA148B /* Views */,
+				8BB50F132AEA4AE000DA148B /* Models */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		8BB50F132AEA4AE000DA148B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8BB50F1B2AEA604D00DA148B /* FundModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8BB50F142AEA4AF000DA148B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8BB50F192AEA554B00DA148B /* HomeFundCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8BB50F152AEA4AF800DA148B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8BB50F012AE9F9C400DA148B /* ViewController.swift */,
+				8BB50F1D2AEA670200DA148B /* FundAddViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8BB50F162AEA4B0900DA148B /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		BFE2F161CCC6FA8B46D2F90C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				64AD2B4F72C7596ADF235131 /* Pods_DreamLife.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EDF3CE415917F82A69846E96 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B92227B089080636048C675C /* Pods-DreamLife.debug.xcconfig */,
+				C79948F88753CB91647276E5 /* Pods-DreamLife.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +158,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8BB50F0E2AE9F9C600DA148B /* Build configuration list for PBXNativeTarget "DreamLife" */;
 			buildPhases = (
+				CB2248C6C7AA98BCD5A4249A /* [CP] Check Pods Manifest.lock */,
 				8BB50EF62AE9F9C400DA148B /* Sources */,
 				8BB50EF72AE9F9C400DA148B /* Frameworks */,
 				8BB50EF82AE9F9C400DA148B /* Resources */,
+				A4A48B006E888BF214117E3B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,13 +219,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A4A48B006E888BF214117E3B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DreamLife/Pods-DreamLife-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DreamLife/Pods-DreamLife-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DreamLife/Pods-DreamLife-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CB2248C6C7AA98BCD5A4249A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DreamLife-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8BB50EF62AE9F9C400DA148B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				8BB50F022AE9F9C400DA148B /* ViewController.swift in Sources */,
+				8BB50F182AEA512900DA148B /* GSConst.swift in Sources */,
 				8BB50EFE2AE9F9C400DA148B /* AppDelegate.swift in Sources */,
+				8BB50F1A2AEA554B00DA148B /* HomeFundCell.swift in Sources */,
+				8BB50F1C2AEA604D00DA148B /* FundModel.swift in Sources */,
+				8BB50F1E2AEA670200DA148B /* FundAddViewController.swift in Sources */,
 				8BB50F002AE9F9C400DA148B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,6 +414,7 @@
 		};
 		8BB50F0F2AE9F9C600DA148B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B92227B089080636048C675C /* Pods-DreamLife.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -311,6 +444,7 @@
 		};
 		8BB50F102AE9F9C600DA148B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C79948F88753CB91647276E5 /* Pods-DreamLife.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
