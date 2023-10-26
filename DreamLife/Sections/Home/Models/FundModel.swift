@@ -7,6 +7,7 @@
 
 import Foundation
 import ObjectMapper
+import WCDBSwift
 
 struct FundModel: Mappable {
     var fundName: String = ""

@@ -19,6 +19,7 @@
 		8BB50F1C2AEA604D00DA148B /* FundModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB50F1B2AEA604D00DA148B /* FundModel.swift */; };
 		8BB50F1E2AEA670200DA148B /* FundAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB50F1D2AEA670200DA148B /* FundAddViewController.swift */; };
 		8BB50F212AEA6EED00DA148B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB50F202AEA6EED00DA148B /* BaseViewController.swift */; };
+		8BB50F232AEA713D00DA148B /* TestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB50F222AEA713D00DA148B /* TestModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		8BB50F1B2AEA604D00DA148B /* FundModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundModel.swift; sourceTree = "<group>"; };
 		8BB50F1D2AEA670200DA148B /* FundAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundAddViewController.swift; sourceTree = "<group>"; };
 		8BB50F202AEA6EED00DA148B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		8BB50F222AEA713D00DA148B /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		B92227B089080636048C675C /* Pods-DreamLife.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DreamLife.debug.xcconfig"; path = "Target Support Files/Pods-DreamLife/Pods-DreamLife.debug.xcconfig"; sourceTree = "<group>"; };
 		C79948F88753CB91647276E5 /* Pods-DreamLife.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DreamLife.release.xcconfig"; path = "Target Support Files/Pods-DreamLife/Pods-DreamLife.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				8BB50F1B2AEA604D00DA148B /* FundModel.swift */,
+				8BB50F222AEA713D00DA148B /* TestModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				8BB50F022AE9F9C400DA148B /* ViewController.swift in Sources */,
 				8BB50F182AEA512900DA148B /* GSConst.swift in Sources */,
 				8BB50EFE2AE9F9C400DA148B /* AppDelegate.swift in Sources */,
+				8BB50F232AEA713D00DA148B /* TestModel.swift in Sources */,
 				8BB50F1A2AEA554B00DA148B /* HomeFundCell.swift in Sources */,
 				8BB50F1C2AEA604D00DA148B /* FundModel.swift in Sources */,
 				8BB50F212AEA6EED00DA148B /* BaseViewController.swift in Sources */,
