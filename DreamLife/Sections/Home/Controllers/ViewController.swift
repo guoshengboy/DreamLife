@@ -9,7 +9,7 @@ import UIKit
 import Then
 import SnapKit
 
-class ViewController: UIViewController {
+class ViewController: BaseViewController {
 
     lazy var tableView: UITableView = UITableView(frame: CGRect.zero, style: .plain).then {
         $0.delegate = self
@@ -38,7 +38,8 @@ class ViewController: UIViewController {
     }
 
     @objc func addFundAction() {
-
+        let vc = FundAddViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 
 }

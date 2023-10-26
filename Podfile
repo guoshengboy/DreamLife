@@ -11,6 +11,7 @@ target 'DreamLife' do
   pod 'Then'
   pod 'SnapKit', '5.6.0' #自动布局
   pod 'ObjectMapper', '~> 3.5' #model解析
+  pod 'JTAppleCalendar', '8.0.5' #日历
 
   
 end
