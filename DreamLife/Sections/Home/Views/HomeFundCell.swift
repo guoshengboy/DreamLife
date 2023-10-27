@@ -45,5 +45,8 @@ class HomeFundCell: UITableViewCell{
         fatalError("init(coder:) has not been implemented")
     }
 
-//    public configCellWithModel:()
+    public func setupCell(model: FundModel) {
+        titleLab.text = model.fundName
+        codeLab.text = model.fundCode
+    }
 }

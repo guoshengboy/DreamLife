@@ -6,19 +6,26 @@
 //
 
 import Foundation
-import ObjectMapper
 import WCDBSwift
 
-struct FundModel: Mappable {
+class FundModel: TableCodable {
+
     var fundName: String = ""
     var fundCode: String = ""
     var addDate: String = ""
 
-    init?(map: Map) {}
+    enum CodingKeys: String, CodingTableKey {
+        typealias Root = FundModel
 
-    mutating func mapping(map: Map) {
-        fundName   <- map["fundName"]
-        fundCode   <- map["fundCode"]
-        addDate   <- map["addDate"]
+        case fundName = "fundName"
+        case fundCode = "fundCode"
+        case addDate = "addDate"
+
+        static let objectRelationalMapping = TableBinding(CodingKeys.self){
+            BindColumnConstraint(fundName, isNotNull: true, defaultTo: "")
+            BindColumnConstraint(fundCode, isNotNull: true, isUnique: true, defaultTo: "")
+            BindColumnConstraint(addDate, isNotNull: true, defaultTo: "")
+        }
     }
 }
+

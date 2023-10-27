@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import DatePickerDialog
+import Toaster
 
 class FundAddViewController: BaseViewController {
 
@@ -55,6 +57,7 @@ class FundAddViewController: BaseViewController {
     }
 
     func addSubViews() {
+        self.navigationItem.rightBarButtonItem = addBtn
         view.addSubview(nameLab)
         view.addSubview(nameTF)
         view.addSubview(codeLab)
@@ -101,11 +104,38 @@ class FundAddViewController: BaseViewController {
     }
 
     @objc func addFundAction() {
+        if nameTF.text?.count == 0 {
+            GSTool.show(text: "请输入基金名称")
+            return
+        }
 
+        if codeTF.text?.count != 6 {
+            GSTool.show(text: "请输入六位基金编码")
+            return
+        }
+
+        if dateBtn.title(for: .normal) == "点击添加日期" {
+            GSTool.show(text: "请选择添加日期")
+            return
+        }
+
+        let model = FundModel()
+        model.fundName = nameTF.text!
+        model.fundCode = codeTF.text!
+        model.addDate = dateBtn.title(for: .normal)!
+        DBManager.shareManager.insert(object: model)
+
+        navigationController?.popViewController(animated: true)
     }
 
     @objc func addDateAction() {
-
+        DatePickerDialog().show("请选择日期") {  date in
+            if let dt = date {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "YYYY-MM-dd"
+                self.dateBtn.setTitle(formatter.string(from: dt), for: .normal)
+            }
+        }
     }
 }
 

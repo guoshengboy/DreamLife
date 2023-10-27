@@ -19,11 +19,20 @@ class ViewController: BaseViewController {
 
     lazy var addBtn: UIBarButtonItem = UIBarButtonItem(title: "添加", style: .plain, target: self, action: #selector(addFundAction))
 
+    var fundArray: [FundModel] = []
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateData()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "我的基金"
+        print(NSHomeDirectory())
         addSubViews()
         layout()
+        updateData()
     }
 
     func addSubViews() {
@@ -37,6 +46,11 @@ class ViewController: BaseViewController {
         }
     }
 
+    func updateData() {
+        fundArray = DBManager.shareManager.getAllObjects(cls: FundModel.self)
+        self.tableView.reloadData()
+    }
+
     @objc func addFundAction() {
         let vc = FundAddViewController()
         navigationController?.pushViewController(vc, animated: true)
@@ -47,11 +61,12 @@ class ViewController: BaseViewController {
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return fundArray.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "HomeFundCell", for: indexPath) as? HomeFundCell else {return UITableViewCell()}
+        cell.setupCell(model: fundArray[indexPath.row])
         return cell
     }
 }
