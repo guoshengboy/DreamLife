@@ -42,7 +42,7 @@ class DBManager: NSObject {
 
     func getAllObjects<T: TableCodable>(cls: T.Type) -> [T] {
         createTable(cls: cls)
-        let tableString = GSTool.classNameAsString(obj: cls.self)
+        let tableString = NSStringFromClass(cls as! AnyClass).components(separatedBy: ".").last!
         let objects: [T]? = try? db.getObjects(on: cls.Properties.all, fromTable: tableString)
         return objects ?? []
     }

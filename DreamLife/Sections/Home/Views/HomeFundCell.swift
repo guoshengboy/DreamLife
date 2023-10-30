@@ -11,11 +11,11 @@ import UIKit
 class HomeFundCell: UITableViewCell{
 
     var titleLab = UILabel().then {
-        $0.font = UIFont.systemFont(ofSize: 16)
+        $0.font = UIFont.systemFont(ofSize: 18)
     }
 
     var codeLab = UILabel().then {
-        $0.font = UIFont.systemFont(ofSize: 9)
+        $0.font = UIFont.systemFont(ofSize: 13)
     }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -37,7 +37,7 @@ class HomeFundCell: UITableViewCell{
 
         codeLab.snp.makeConstraints { make in
             make.left.equalTo(titleLab)
-            make.top.equalTo(titleLab.snp_bottomMargin).offset(2)
+            make.top.equalTo(titleLab.snp_bottomMargin).offset(10)
         }
     }
 

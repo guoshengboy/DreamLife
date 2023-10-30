@@ -1,15 +1,19 @@
 //
-//  ViewController.swift
+//  FundDealViewController.swift
 //  DreamLife
 //
-//  Created by 曹国盛 on 2023/10/26.
+//  Created by 曹国盛 on 2023/10/30.
 //
 
-import UIKit
+import Foundation
+
 import Then
 import SnapKit
 
-class ViewController: BaseViewController {
+class FundDealViewController: BaseViewController {
+
+    var dealSearchType:String = ""
+    var model: FundModel?
 
     lazy var tableView: UITableView = UITableView(frame: CGRect.zero, style: .plain).then {
         $0.delegate = self
@@ -17,22 +21,15 @@ class ViewController: BaseViewController {
         $0.register(HomeFundCell.self, forCellReuseIdentifier: "HomeFundCell")
     }
 
-    lazy var addBtn: UIBarButtonItem = UIBarButtonItem(title: "添加", style: .plain, target: self, action: #selector(addFundAction))
+    lazy var addBtn: UIBarButtonItem = UIBarButtonItem(title: "添加初始交易", style: .plain, target: self, action: #selector(addInitBuyAction))
 
     var fundArray: [FundModel] = []
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        updateData()
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "我的基金"
-        print(NSHomeDirectory())
+        title = dealSearchType
         addSubViews()
         layout()
-        updateData()
     }
 
     func addSubViews() {
@@ -46,19 +43,15 @@ class ViewController: BaseViewController {
         }
     }
 
-    func updateData() {
-        fundArray = DBManager.shareManager.getAllObjects(cls: FundModel.self)
-        self.tableView.reloadData()
-    }
-
-    @objc func addFundAction() {
-        let vc = FundAddViewController()
+    @objc func addInitBuyAction() {
+        let vc = InitialBuyViewController()
+        vc.baseModel = model
         navigationController?.pushViewController(vc, animated: true)
     }
 
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension FundDealViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

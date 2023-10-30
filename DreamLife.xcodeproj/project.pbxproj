@@ -20,6 +20,11 @@
 		8BB50F212AEA6EED00DA148B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB50F202AEA6EED00DA148B /* BaseViewController.swift */; };
 		8BB50F282AEB4A2C00DA148B /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB50F272AEB4A2C00DA148B /* DBManager.swift */; };
 		8BB50F2B2AEB9F3A00DA148B /* GSTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB50F2A2AEB9F3A00DA148B /* GSTool.swift */; };
+		8BD728062AEF3E5200CE0F34 /* FundDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD728052AEF3E5100CE0F34 /* FundDetailViewController.swift */; };
+		8BD728082AEF414400CE0F34 /* FundDealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD728072AEF414400CE0F34 /* FundDealViewController.swift */; };
+		8BD7280A2AEF420E00CE0F34 /* FundDealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD728092AEF420E00CE0F34 /* FundDealModel.swift */; };
+		8BD7280E2AEF9C1300CE0F34 /* BuyOrSellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD7280D2AEF9C1300CE0F34 /* BuyOrSellViewController.swift */; };
+		8BD728102AEF9C4500CE0F34 /* InitialBuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD7280F2AEF9C4500CE0F34 /* InitialBuyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +43,11 @@
 		8BB50F202AEA6EED00DA148B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		8BB50F272AEB4A2C00DA148B /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		8BB50F2A2AEB9F3A00DA148B /* GSTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSTool.swift; sourceTree = "<group>"; };
+		8BD728052AEF3E5100CE0F34 /* FundDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundDetailViewController.swift; sourceTree = "<group>"; };
+		8BD728072AEF414400CE0F34 /* FundDealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundDealViewController.swift; sourceTree = "<group>"; };
+		8BD728092AEF420E00CE0F34 /* FundDealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundDealModel.swift; sourceTree = "<group>"; };
+		8BD7280D2AEF9C1300CE0F34 /* BuyOrSellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyOrSellViewController.swift; sourceTree = "<group>"; };
+		8BD7280F2AEF9C4500CE0F34 /* InitialBuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialBuyViewController.swift; sourceTree = "<group>"; };
 		B92227B089080636048C675C /* Pods-DreamLife.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DreamLife.debug.xcconfig"; path = "Target Support Files/Pods-DreamLife/Pods-DreamLife.debug.xcconfig"; sourceTree = "<group>"; };
 		C79948F88753CB91647276E5 /* Pods-DreamLife.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DreamLife.release.xcconfig"; path = "Target Support Files/Pods-DreamLife/Pods-DreamLife.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				8BB50F1B2AEA604D00DA148B /* FundModel.swift */,
+				8BD728092AEF420E00CE0F34 /* FundDealModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -127,6 +138,10 @@
 			children = (
 				8BB50F012AE9F9C400DA148B /* ViewController.swift */,
 				8BB50F1D2AEA670200DA148B /* FundAddViewController.swift */,
+				8BD728052AEF3E5100CE0F34 /* FundDetailViewController.swift */,
+				8BD728072AEF414400CE0F34 /* FundDealViewController.swift */,
+				8BD7280F2AEF9C4500CE0F34 /* InitialBuyViewController.swift */,
+				8BD7280D2AEF9C1300CE0F34 /* BuyOrSellViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -297,13 +312,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BB50F022AE9F9C400DA148B /* ViewController.swift in Sources */,
+				8BD728082AEF414400CE0F34 /* FundDealViewController.swift in Sources */,
 				8BB50F182AEA512900DA148B /* GSConst.swift in Sources */,
 				8BB50EFE2AE9F9C400DA148B /* AppDelegate.swift in Sources */,
 				8BB50F1A2AEA554B00DA148B /* HomeFundCell.swift in Sources */,
 				8BB50F1C2AEA604D00DA148B /* FundModel.swift in Sources */,
+				8BD7280A2AEF420E00CE0F34 /* FundDealModel.swift in Sources */,
+				8BD728102AEF9C4500CE0F34 /* InitialBuyViewController.swift in Sources */,
 				8BB50F212AEA6EED00DA148B /* BaseViewController.swift in Sources */,
 				8BB50F2B2AEB9F3A00DA148B /* GSTool.swift in Sources */,
+				8BD7280E2AEF9C1300CE0F34 /* BuyOrSellViewController.swift in Sources */,
 				8BB50F1E2AEA670200DA148B /* FundAddViewController.swift in Sources */,
+				8BD728062AEF3E5200CE0F34 /* FundDetailViewController.swift in Sources */,
 				8BB50F282AEB4A2C00DA148B /* DBManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
