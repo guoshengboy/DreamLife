@@ -46,4 +46,11 @@ class DBManager: NSObject {
         let objects: [T]? = try? db.getObjects(on: cls.Properties.all, fromTable: tableString)
         return objects ?? []
     }
+
+    func getObjects<T: TableCodable>(cls: T.Type, where condition: Condition? = nil) -> [T]{
+        createTable(cls: cls)
+        let tableString = NSStringFromClass(cls as! AnyClass).components(separatedBy: ".").last!
+        let objects: [T]? = try? db.getObjects(fromTable: tableString, where: condition)
+        return objects ?? []
+    }
 }

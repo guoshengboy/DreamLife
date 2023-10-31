@@ -9,6 +9,7 @@ import Foundation
 
 import Then
 import SnapKit
+import WCDBSwift
 
 class FundDealViewController: BaseViewController {
 
@@ -44,7 +45,9 @@ class FundDealViewController: BaseViewController {
     }
 
     func updateData() {
-        
+        //先获取初始买的数据(进行中或者计划中的)
+        let initBuyArray = DBManager.shareManager.getObjects(cls: FundDealModel.self, where: FundDealModel.Properties.fundCode == model?.fundCode ?? "" && FundDealModel.Properties.dealType == DealType.initialBuy.rawValue && FundDealModel.Properties.dealStatus == DealStatusType.underway.rawValue || FundDealModel.Properties.dealStatus == DealStatusType.plan.rawValue)
+
     }
 
     @objc func addInitBuyAction() {

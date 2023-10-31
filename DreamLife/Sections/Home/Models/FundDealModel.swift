@@ -59,7 +59,7 @@ class FundDealModel: TableCodable {
 
         static let objectRelationalMapping = TableBinding(CodingKeys.self){
             BindColumnConstraint(fundName, isNotNull: true, defaultTo: "")
-            BindColumnConstraint(fundCode, isNotNull: true, isUnique: true, defaultTo: "")
+            BindColumnConstraint(fundCode, isNotNull: true, defaultTo: "")
             BindColumnConstraint(addDate, isNotNull: true, defaultTo: "")
             BindColumnConstraint(dealType, isNotNull: true, defaultTo: 1)
             BindColumnConstraint(dealStatus, isNotNull: true, defaultTo: 1)
