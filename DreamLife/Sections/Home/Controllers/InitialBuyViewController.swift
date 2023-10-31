@@ -226,17 +226,23 @@ class InitialBuyViewController: BaseViewController {
 
     //选择交易状态
     @objc func selectDealStatusAction() {
-        GSTool.showSheet(title: "请选择交易状态" ,titleArray: ["1：进行中", "2：已结束", "3：计划"], currentVC: self) { title in
+        GSTool.showSheet(title: "请选择交易状态" ,titleArray: ["1：进行中", "3：计划"], currentVC: self) { title in
             self.dealStatusBtn.setTitle(title, for: .normal)
         }
     }
 
     //选择日期
     @objc func addDateAction() {
-        if dealStatusBtn.title(for: .normal) == "点击选择交易状态" {
+        if dealStatusBtn.title(for: .normal) == "点击选择交易状态"  {
             GSTool.show(text: "请先选择交易状态")
             return
         }
+
+        if dealStatusBtn.title(for: .normal)!.contains("3") {
+            GSTool.show(text: "计划中 的交易无需选择日期")
+            return
+        }
+
         DatePickerDialog().show("请选择日期") {  date in
             if let dt = date {
                 let formatter = DateFormatter()

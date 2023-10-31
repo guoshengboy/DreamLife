@@ -14,7 +14,8 @@ import Toaster
 
 class BuyOrSellViewController: BaseViewController {
 
-    var baseModel: FundModel?
+    var baseModel: FundDealModel?
+    var dealType: DealType = .sell
     var detalStatus: DealStatusType = .plan
 
     lazy var addBtn: UIBarButtonItem = UIBarButtonItem(title: "确定", style: .plain, target: self, action: #selector(addFundAction))
