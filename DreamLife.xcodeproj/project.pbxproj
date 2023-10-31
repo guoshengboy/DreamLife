@@ -25,6 +25,8 @@
 		8BD7280A2AEF420E00CE0F34 /* FundDealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD728092AEF420E00CE0F34 /* FundDealModel.swift */; };
 		8BD7280E2AEF9C1300CE0F34 /* BuyOrSellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD7280D2AEF9C1300CE0F34 /* BuyOrSellViewController.swift */; };
 		8BD728102AEF9C4500CE0F34 /* InitialBuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD7280F2AEF9C4500CE0F34 /* InitialBuyViewController.swift */; };
+		8BD728122AF0964500CE0F34 /* DealInitialBuyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD728112AF0964500CE0F34 /* DealInitialBuyCell.swift */; };
+		8BD728142AF0965E00CE0F34 /* DealInitialBuyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BD728132AF0965E00CE0F34 /* DealInitialBuyCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		8BD728092AEF420E00CE0F34 /* FundDealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundDealModel.swift; sourceTree = "<group>"; };
 		8BD7280D2AEF9C1300CE0F34 /* BuyOrSellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyOrSellViewController.swift; sourceTree = "<group>"; };
 		8BD7280F2AEF9C4500CE0F34 /* InitialBuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialBuyViewController.swift; sourceTree = "<group>"; };
+		8BD728112AF0964500CE0F34 /* DealInitialBuyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealInitialBuyCell.swift; sourceTree = "<group>"; };
+		8BD728132AF0965E00CE0F34 /* DealInitialBuyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DealInitialBuyCell.xib; sourceTree = "<group>"; };
 		B92227B089080636048C675C /* Pods-DreamLife.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DreamLife.debug.xcconfig"; path = "Target Support Files/Pods-DreamLife/Pods-DreamLife.debug.xcconfig"; sourceTree = "<group>"; };
 		C79948F88753CB91647276E5 /* Pods-DreamLife.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DreamLife.release.xcconfig"; path = "Target Support Files/Pods-DreamLife/Pods-DreamLife.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,6 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				8BB50F192AEA554B00DA148B /* HomeFundCell.swift */,
+				8BD728112AF0964500CE0F34 /* DealInitialBuyCell.swift */,
+				8BD728132AF0965E00CE0F34 /* DealInitialBuyCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -259,6 +265,7 @@
 				8BB50F0A2AE9F9C600DA148B /* LaunchScreen.storyboard in Resources */,
 				8BB50F072AE9F9C600DA148B /* Assets.xcassets in Resources */,
 				8BB50F052AE9F9C400DA148B /* Main.storyboard in Resources */,
+				8BD728142AF0965E00CE0F34 /* DealInitialBuyCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +330,7 @@
 				8BB50F2B2AEB9F3A00DA148B /* GSTool.swift in Sources */,
 				8BD7280E2AEF9C1300CE0F34 /* BuyOrSellViewController.swift in Sources */,
 				8BB50F1E2AEA670200DA148B /* FundAddViewController.swift in Sources */,
+				8BD728122AF0964500CE0F34 /* DealInitialBuyCell.swift in Sources */,
 				8BD728062AEF3E5200CE0F34 /* FundDetailViewController.swift in Sources */,
 				8BB50F282AEB4A2C00DA148B /* DBManager.swift in Sources */,
 			);

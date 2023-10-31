@@ -19,7 +19,7 @@ class FundDetailViewController: BaseViewController {
         $0.register(UITableViewCell.self, forCellReuseIdentifier: "FundDetailCell")
     }
 
-    lazy var titleArray = ["基金配置", "全部", "进行中", "已结束"]
+    lazy var titleArray = ["基金配置", "全部"]
 
     override func viewDidLoad() {
         super.viewDidLoad()

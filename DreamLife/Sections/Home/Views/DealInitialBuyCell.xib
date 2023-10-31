@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DealInitialBuyCell" rowHeight="92" id="yCh-gz-gwn" customClass="DealInitialBuyCell" customModule="DreamLife" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="412" height="92"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yCh-gz-gwn" id="em6-JU-1TX">
+                <rect key="frame" x="0.0" y="0.0" width="412" height="92"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="易方达沪深300ETF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sl4-D2-ULL">
+                        <rect key="frame" x="10" y="10" width="147" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="购买日期：2023-10-23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQ2-MB-hBm">
+                        <rect key="frame" x="10" y="39" width="180" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="购买价格：1.737" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X9G-Kh-SnF">
+                        <rect key="frame" x="10" y="68" width="127" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="购买数量：700" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zDJ-Ua-1KX">
+                        <rect key="frame" x="147" y="68" width="117" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未开始" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qc4-9w-Rq8">
+                        <rect key="frame" x="350" y="10" width="52" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="初始买" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2LI-Ac-SlV">
+                        <rect key="frame" x="288" y="10" width="52" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="sl4-D2-ULL" firstAttribute="top" secondItem="em6-JU-1TX" secondAttribute="top" constant="10" id="0dk-LY-ZBz"/>
+                    <constraint firstAttribute="trailing" secondItem="qc4-9w-Rq8" secondAttribute="trailing" constant="10" id="2hT-fS-CU7"/>
+                    <constraint firstItem="2LI-Ac-SlV" firstAttribute="top" secondItem="qc4-9w-Rq8" secondAttribute="top" id="3EY-of-NG3"/>
+                    <constraint firstItem="qc4-9w-Rq8" firstAttribute="top" secondItem="em6-JU-1TX" secondAttribute="top" constant="10" id="8VU-nX-2Tf"/>
+                    <constraint firstItem="sl4-D2-ULL" firstAttribute="leading" secondItem="em6-JU-1TX" secondAttribute="leading" constant="10" id="Q0V-ha-WGT"/>
+                    <constraint firstItem="zDJ-Ua-1KX" firstAttribute="leading" secondItem="X9G-Kh-SnF" secondAttribute="trailing" constant="10" id="QGl-M7-Tsn"/>
+                    <constraint firstItem="X9G-Kh-SnF" firstAttribute="top" secondItem="HQ2-MB-hBm" secondAttribute="bottom" constant="8" symbolic="YES" id="QLu-5e-rPc"/>
+                    <constraint firstItem="zDJ-Ua-1KX" firstAttribute="centerY" secondItem="X9G-Kh-SnF" secondAttribute="centerY" id="ZV2-za-Wc6"/>
+                    <constraint firstItem="HQ2-MB-hBm" firstAttribute="top" secondItem="sl4-D2-ULL" secondAttribute="bottom" constant="8" symbolic="YES" id="air-mf-RUe"/>
+                    <constraint firstItem="qc4-9w-Rq8" firstAttribute="leading" secondItem="2LI-Ac-SlV" secondAttribute="trailing" constant="10" id="bhd-0h-0MG"/>
+                    <constraint firstItem="X9G-Kh-SnF" firstAttribute="leading" secondItem="HQ2-MB-hBm" secondAttribute="leading" id="f9m-PS-ubq"/>
+                    <constraint firstItem="HQ2-MB-hBm" firstAttribute="leading" secondItem="sl4-D2-ULL" secondAttribute="leading" id="vEe-dC-Tag"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="buyCountLab" destination="zDJ-Ua-1KX" id="szu-lG-6CC"/>
+                <outlet property="buyDateLab" destination="HQ2-MB-hBm" id="uXK-wR-qB4"/>
+                <outlet property="buyPriceLab" destination="X9G-Kh-SnF" id="z9x-r5-AEL"/>
+                <outlet property="dealStatusLab" destination="qc4-9w-Rq8" id="Mbp-vK-Wui"/>
+                <outlet property="dealTypeLab" destination="2LI-Ac-SlV" id="jX7-3G-eZC"/>
+                <outlet property="fundNameLab" destination="sl4-D2-ULL" id="hFj-Pm-g30"/>
+            </connections>
+            <point key="canvasLocation" x="189.31297709923663" y="11.267605633802818"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -200,11 +200,27 @@ class InitialBuyViewController: BaseViewController {
             return
         }
 
+        var dealStatus = DealStatusType.underway
+        if dealStatusBtn.title(for: .normal)!.contains("1"){
+            dealStatus = .underway
+        }
+        if dealStatusBtn.title(for: .normal)!.contains("2"){
+            dealStatus = .finish
+        }
+        if dealStatusBtn.title(for: .normal)!.contains("3"){
+            dealStatus = .plan
+        }
+
         let dealModel = FundDealModel()
         dealModel.fundName = baseModel?.fundName ?? ""
         dealModel.fundCode = baseModel?.fundCode ?? ""
         dealModel.buyPrice = buyPriceTF.text ?? ""
         dealModel.buyCount = buyCountTF.text ?? ""
+        dealModel.dealType = DealType.initialBuy.rawValue
+        dealModel.dealStatus = dealStatus.rawValue
+        dealModel.buyID = GSTool.getTimeStamp()
+
+        DBManager.shareManager.insert(object: dealModel)
 
     }
 
