@@ -30,17 +30,10 @@ struct GSTool {
     }
 
     static func getTimeStamp() -> String {
-        let date = NSDate(timeIntervalSinceReferenceDate: 0)
+        let date = Date()
         let currentTimeInterval = date.timeIntervalSince1970
         return String(currentTimeInterval)
     }
 
-//    +(NSString *)getTimeStamp{
-//        NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
-//        NSTimeInterval currentTimeInterval = [dat timeIntervalSince1970];
-//        NSInteger timeStamp = currentTimeInterval;
-//        NSString *timeString = [NSString stringWithFormat:@"%ld", (long)timeStamp];
-//        return timeString;
-//    }
 
 }

@@ -26,11 +26,17 @@ class FundDealViewController: BaseViewController {
 
     var dealArray: [[FundDealModel]] = []
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateData()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = dealSearchType
         addSubViews()
         layout()
+        updateData()
     }
 
     func addSubViews() {
@@ -47,7 +53,11 @@ class FundDealViewController: BaseViewController {
     func updateData() {
         //先获取初始买的数据(进行中或者计划中的)
         let initBuyArray = DBManager.shareManager.getObjects(cls: FundDealModel.self, where: FundDealModel.Properties.fundCode == model?.fundCode ?? "" && FundDealModel.Properties.dealType == DealType.initialBuy.rawValue && FundDealModel.Properties.dealStatus == DealStatusType.underway.rawValue || FundDealModel.Properties.dealStatus == DealStatusType.plan.rawValue)
-
+        for item in initBuyArray {
+            dealArray.removeAll()
+            dealArray.append([item])
+        }
+        tableView.reloadData()
     }
 
     @objc func addInitBuyAction() {

@@ -233,6 +233,10 @@ class InitialBuyViewController: BaseViewController {
 
     //选择日期
     @objc func addDateAction() {
+        if dealStatusBtn.title(for: .normal) == "点击选择交易状态" {
+            GSTool.show(text: "请先选择交易状态")
+            return
+        }
         DatePickerDialog().show("请选择日期") {  date in
             if let dt = date {
                 let formatter = DateFormatter()
