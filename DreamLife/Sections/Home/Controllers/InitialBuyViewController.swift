@@ -92,6 +92,8 @@ class InitialBuyViewController: BaseViewController {
         layout()
     }
 
+    
+
     func addSubViews() {
         self.navigationItem.rightBarButtonItem = addBtn
         view.addSubview(nameLab)
@@ -219,6 +221,7 @@ class InitialBuyViewController: BaseViewController {
         dealModel.dealType = DealType.initialBuy.rawValue
         dealModel.dealStatus = dealStatus.rawValue
         dealModel.buyID = GSTool.getTimeStamp()
+        dealModel.isFirstInitialBuy = !FundDealModel.isExistFirstInitialBuy(code: baseModel?.fundCode ?? "")
 
         DBManager.shareManager.insert(object: dealModel)
 

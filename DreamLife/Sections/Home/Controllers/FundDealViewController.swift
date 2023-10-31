@@ -53,8 +53,8 @@ class FundDealViewController: BaseViewController {
     func updateData() {
         //先获取初始买的数据(进行中或者计划中的)
         let initBuyArray = DBManager.shareManager.getObjects(cls: FundDealModel.self, where: FundDealModel.Properties.fundCode == model?.fundCode ?? "" && FundDealModel.Properties.dealType == DealType.initialBuy.rawValue && FundDealModel.Properties.dealStatus == DealStatusType.underway.rawValue || FundDealModel.Properties.dealStatus == DealStatusType.plan.rawValue)
+        dealArray.removeAll()
         for item in initBuyArray {
-            dealArray.removeAll()
             dealArray.append([item])
         }
         tableView.reloadData()
@@ -93,6 +93,22 @@ extension FundDealViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        let dealModel = dealArray[indexPath.section][indexPath.row]
+//        if dealModel
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "删除") { (action, view, handler) in
+        print("delete")
+        }
+
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        configuration.performsFirstActionWithFullSwipe = false
+        return configuration
     }
 }
 

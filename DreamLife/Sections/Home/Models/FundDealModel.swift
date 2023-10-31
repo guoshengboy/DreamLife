@@ -29,6 +29,7 @@ class FundDealModel: TableCodable {
     var dealType: Int = DealType.initialBuy.rawValue //交易类型
     var dealStatus:Int = DealStatusType.underway.rawValue //交易状态
     var buyID: String = ""//针对够买的交易会生成唯一标识、针对卖来说 用来寻找属于哪一个购买操作
+    var isFirstInitialBuy: Bool = false
 
     /****初始买****/
     var initBuyCount: Int = 0 //初始购买的个数 这个不会进行加减操作 只是记录
@@ -55,6 +56,7 @@ class FundDealModel: TableCodable {
         case buyCount = "buyCount"
         case sellPrice = "sellPrice"
         case sellCount = "sellCount"
+        case isFirstInitialBuy = "isFirstInitialBuy"
 
 
         static let objectRelationalMapping = TableBinding(CodingKeys.self){
@@ -69,7 +71,28 @@ class FundDealModel: TableCodable {
             BindColumnConstraint(buyCount, isNotNull: true, defaultTo: "0")
             BindColumnConstraint(sellPrice, isNotNull: true, defaultTo: "0")
             BindColumnConstraint(sellCount, isNotNull: true, defaultTo: "0")
+            BindColumnConstraint(isFirstInitialBuy, isNotNull: true, defaultTo: false)
         }
+    }
+
+    ///是否存在第一次初始买的
+    static func isExistFirstInitialBuy(code: String) -> Bool {
+        //先获取初始买的数据(进行中)
+        let initBuyArray = DBManager.shareManager.getObjects(cls: self, where: FundDealModel.Properties.fundCode == code && FundDealModel.Properties.dealType == DealType.initialBuy.rawValue && FundDealModel.Properties.dealStatus == DealStatusType.underway.rawValue)
+        if initBuyArray.count == 0 {
+            return false
+        }
+        return true
+    }
+
+    ///
+    static func getFirstInitialBuy(code: String) -> FundDealModel? {
+        //先获取初始买的数据(进行中)
+        let initBuyArray = DBManager.shareManager.getObjects(cls: self, where: FundDealModel.Properties.fundCode == code && FundDealModel.Properties.dealType == DealType.initialBuy.rawValue && FundDealModel.Properties.dealStatus == DealStatusType.underway.rawValue && FundDealModel.Properties.isFirstInitialBuy == true)
+        if initBuyArray.count == 0 {
+            return nil
+        }
+        return initBuyArray[0]
     }
 }
 
