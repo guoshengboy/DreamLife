@@ -18,7 +18,7 @@ class FundDealViewController: BaseViewController {
     lazy var tableView: UITableView = UITableView(frame: CGRect.zero, style: .plain).then {
         $0.delegate = self
         $0.dataSource = self
-        $0.register(HomeFundCell.self, forCellReuseIdentifier: "HomeFundCell")
+        $0.register(UINib(nibName: "DealInitialBuyCell", bundle: nil), forCellReuseIdentifier: "DealInitialBuyCell")
     }
 
     lazy var addBtn: UIBarButtonItem = UIBarButtonItem(title: "添加初始交易", style: .plain, target: self, action: #selector(addInitBuyAction))
@@ -43,6 +43,10 @@ class FundDealViewController: BaseViewController {
         }
     }
 
+    func updateData() {
+        
+    }
+
     @objc func addInitBuyAction() {
         let vc = InitialBuyViewController()
         vc.baseModel = model
@@ -55,19 +59,27 @@ extension FundDealViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dealArray[section].count
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
         return dealArray.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DealInitialBuyCell", for: indexPath) as? DealInitialBuyCell else {
+            return UITableViewCell()
+        }
+        let array = dealArray[indexPath.section]
+        cell.setupCell(initialBuy: array[indexPath.row])
+        return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 100
     }
 }
 
