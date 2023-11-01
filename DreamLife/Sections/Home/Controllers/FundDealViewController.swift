@@ -52,10 +52,19 @@ class FundDealViewController: BaseViewController {
 
     func updateData() {
         //先获取初始买的数据(进行中或者计划中的)
-        let initBuyArray = DBManager.shareManager.getObjects(cls: FundDealModel.self, where: FundDealModel.Properties.fundCode == model?.fundCode ?? "" && FundDealModel.Properties.dealType == DealType.initialBuy.rawValue && FundDealModel.Properties.dealStatus == DealStatusType.underway.rawValue || FundDealModel.Properties.dealStatus == DealStatusType.plan.rawValue)
+        let initBuyArray = DBManager.shareManager.getObjects(cls: FundDealModel.self, where: FundDealModel.Properties.fundCode == model?.fundCode ?? "" && FundDealModel.Properties.dealType == DealType.initialBuy.rawValue && (FundDealModel.Properties.dealStatus == DealStatusType.underway.rawValue || FundDealModel.Properties.dealStatus == DealStatusType.plan.rawValue))
+
+        //从低到高排序
+        let sortArray = initBuyArray.sorted { model1, model2 in
+            return (Double(model1.buyPrice) ?? 0) < (Double(model2.buyPrice) ?? 0)
+        }
         dealArray.removeAll()
-        for item in initBuyArray {
-            dealArray.append([item])
+        for item in sortArray {
+            var resultArray: [FundDealModel] = []
+            resultArray.append(item)
+            let subArray = FundDealModel.getSubarray(model: item)
+            resultArray.append(contentsOf: subArray)
+            dealArray.append(resultArray)
         }
         tableView.reloadData()
     }
@@ -66,6 +75,30 @@ class FundDealViewController: BaseViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
 
+    //删除交易记录
+    func deleteFund(model: FundDealModel) {
+        //只能删除计划中的数据
+        if model.dealStatus != DealStatusType.plan.rawValue {
+            GSTool.show(text: "只能删除计划中的数据")
+            return
+        }
+        
+        //为初始买 则要删除所有相关的唯一标识的数据
+        if model.dealType == DealType.initialBuy.rawValue {
+            DBManager.shareManager.deleteObject(tableName: "FundDealModel", where: FundDealModel.Properties.dealID == model.dealID || FundDealModel.Properties.fatherID == model.dealID)
+        }else{//直接删除当前数据即可
+            DBManager.shareManager.deleteObject(tableName: "FundDealModel", where: FundDealModel.Properties.dealID == model.dealID)
+        }
+        updateData()
+    }
+
+    //买和卖
+    func buyOrSell(model: FundDealModel, type: DealType) {
+        let vc = BuyOrSellViewController()
+        vc.dealType = type
+        vc.baseModel = model
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension FundDealViewController: UITableViewDelegate, UITableViewDataSource {
@@ -96,17 +129,28 @@ extension FundDealViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        let dealModel = dealArray[indexPath.section][indexPath.row]
-//        if dealModel
         return true
     }
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let model = dealArray[indexPath.section][indexPath.row]
         let deleteAction = UIContextualAction(style: .destructive, title: "删除") { (action, view, handler) in
-        print("delete")
+            self.deleteFund(model: model)
         }
+        deleteAction.backgroundColor = .blue
 
-        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        let buyAction = UIContextualAction(style: .destructive, title: "买") {[weak self] (action, view, handler) in
+            guard let self = self else { return }
+            self.buyOrSell(model: model, type: .buy)
+        }
+        buyAction.backgroundColor = .red
+
+        let sellAction = UIContextualAction(style: .destructive, title: "卖") { (action, view, handler) in
+            self.buyOrSell(model: model, type: .sell)
+        }
+        sellAction.backgroundColor = .green
+
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, buyAction, sellAction])
         configuration.performsFirstActionWithFullSwipe = false
         return configuration
     }

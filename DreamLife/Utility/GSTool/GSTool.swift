@@ -15,6 +15,9 @@ struct GSTool {
     }
 
     static func show(text: String) {
+        //toast设置
+        ToastView.appearance().font = UIFont.systemFont(ofSize: 18)
+        ToastView.appearance().bottomOffsetPortrait = 550
         Toast(text: text).show()
     }
 
@@ -26,6 +29,10 @@ struct GSTool {
             }
             alertCtrl.addAction(action)
         }
+
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel)
+        alertCtrl.addAction(cancelAction)
+
         currentVC.present(alertCtrl, animated: true)
     }
 

@@ -182,10 +182,17 @@ class InitialBuyViewController: BaseViewController {
 
     @objc func addFundAction() {
 
-        if dateBtn.title(for: .normal) == "点击添加日期" {
+        if dealStatusBtn.title(for: .normal) == "点击选择交易状态" {
+            GSTool.show(text: "请选择交易状态")
+            return
+        }
+
+        var dateString = "无"
+        if dateBtn.title(for: .normal) == "点击添加日期" && dealStatusBtn.title(for: .normal)!.contains("进行中"){
             GSTool.show(text: "请选择购买日期")
             return
         }
+        dateString = dateBtn.title(for: .normal) ?? ""
 
         if buyPriceTF.text?.count == 0 {
             GSTool.show(text: "请输入购买价格")
@@ -194,11 +201,6 @@ class InitialBuyViewController: BaseViewController {
 
         if buyCountTF.text?.count == 0 {
             GSTool.show(text: "请输入购买数量")
-            return
-        }
-
-        if dealStatusBtn.title(for: .normal) == "点击选择交易状态" {
-            GSTool.show(text: "请选择交易状态")
             return
         }
 
@@ -211,19 +213,22 @@ class InitialBuyViewController: BaseViewController {
         }
         if dealStatusBtn.title(for: .normal)!.contains("3"){
             dealStatus = .plan
+            dateString = ""
         }
 
         let dealModel = FundDealModel()
         dealModel.fundName = baseModel?.fundName ?? ""
         dealModel.fundCode = baseModel?.fundCode ?? ""
+        dealModel.addDate = dateString
         dealModel.buyPrice = buyPriceTF.text ?? ""
         dealModel.buyCount = buyCountTF.text ?? ""
         dealModel.dealType = DealType.initialBuy.rawValue
         dealModel.dealStatus = dealStatus.rawValue
-        dealModel.buyID = GSTool.getTimeStamp()
+        dealModel.dealID = GSTool.getTimeStamp()
         dealModel.isFirstInitialBuy = !FundDealModel.isExistFirstInitialBuy(code: baseModel?.fundCode ?? "")
 
         DBManager.shareManager.insert(object: dealModel)
+        navigationController?.popViewController(animated: true)
 
     }
 
@@ -253,5 +258,9 @@ class InitialBuyViewController: BaseViewController {
                 self.dateBtn.setTitle(formatter.string(from: dt), for: .normal)
             }
         }
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 }

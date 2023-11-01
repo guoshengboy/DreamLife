@@ -17,6 +17,11 @@ class BuyOrSellViewController: BaseViewController {
     var baseModel: FundDealModel?
     var dealType: DealType = .sell
     var detalStatus: DealStatusType = .plan
+    var dealStr: String? {
+        get{
+            return dealType == .sell ? "卖出" : "购买"
+        }
+    }
 
     lazy var addBtn: UIBarButtonItem = UIBarButtonItem(title: "确定", style: .plain, target: self, action: #selector(addFundAction))
 
@@ -42,6 +47,17 @@ class BuyOrSellViewController: BaseViewController {
         $0.font = UIFont.systemFont(ofSize: 16)
     }
 
+    lazy var fatherPriceLab: UILabel = UILabel().then {
+        $0.text = "初始买价格："
+        $0.font = UIFont.systemFont(ofSize: 16)
+        $0.textAlignment = .right
+    }
+
+    lazy var  fatherPriceValueLab: UILabel = UILabel().then {
+        $0.text = baseModel?.buyPrice ?? ""
+        $0.font = UIFont.systemFont(ofSize: 16)
+    }
+
     lazy var dateLab: UILabel = UILabel().then {
         $0.text = "添加日期："
         $0.font = UIFont.systemFont(ofSize: 16)
@@ -55,23 +71,23 @@ class BuyOrSellViewController: BaseViewController {
     }
 
     lazy var buyPriceLab: UILabel = UILabel().then {
-        $0.text = "购买价格："
+        $0.text = "\(dealStr!)价格："
         $0.font = UIFont.systemFont(ofSize: 16)
         $0.textAlignment = .right
     }
 
     lazy var buyPriceTF: UITextField = UITextField().then {
-        $0.placeholder = "请输入购买价格"
+        $0.placeholder = "请输入\(dealStr!)价格"
     }
 
     lazy var buyCountLab: UILabel = UILabel().then {
-        $0.text = "购买数量："
+        $0.text = "\(dealStr!)数量："
         $0.font = UIFont.systemFont(ofSize: 16)
         $0.textAlignment = .right
     }
 
     lazy var buyCountTF: UITextField = UITextField().then {
-        $0.placeholder = "请输入购买数量"
+        $0.placeholder = "请输入\(dealStr!)数量"
     }
 
     lazy var dealStatusLab: UILabel = UILabel().then {
@@ -88,7 +104,7 @@ class BuyOrSellViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "添加初始购买"
+        title = dealStr!
         addSubViews()
         layout()
     }
@@ -99,6 +115,8 @@ class BuyOrSellViewController: BaseViewController {
         view.addSubview(nameValueLab)
         view.addSubview(codeLab)
         view.addSubview(codeValueLab)
+        view.addSubview(fatherPriceLab)
+        view.addSubview(fatherPriceValueLab)
         view.addSubview(dateLab)
         view.addSubview(dateBtn)
         view.addSubview(buyPriceLab)
@@ -134,10 +152,21 @@ class BuyOrSellViewController: BaseViewController {
             make.centerY.equalTo(codeLab)
         }
 
-        dateLab.snp.makeConstraints { make in
+        fatherPriceLab.snp.makeConstraints { make in
             make.top.equalTo(codeLab.snp_bottomMargin).offset(10)
-            make.left.equalTo(nameLab)
-            make.width.height.equalTo(nameLab)
+            make.left.equalTo(codeLab)
+            make.width.height.equalTo(codeLab)
+        }
+
+        fatherPriceValueLab.snp.makeConstraints { make in
+            make.left.equalTo(fatherPriceLab.snp_rightMargin).offset(10)
+            make.centerY.equalTo(fatherPriceLab)
+        }
+
+        dateLab.snp.makeConstraints { make in
+            make.top.equalTo(fatherPriceLab.snp_bottomMargin).offset(10)
+            make.left.equalTo(fatherPriceLab)
+            make.width.height.equalTo(fatherPriceLab)
         }
 
         dateBtn.snp.makeConstraints { make in
@@ -181,53 +210,65 @@ class BuyOrSellViewController: BaseViewController {
 
     @objc func addFundAction() {
 
-        if dateBtn.title(for: .normal) == "点击添加日期" {
+        if dealStatusBtn.title(for: .normal) == "点击选择交易状态" {
+            GSTool.show(text: "请选择交易状态")
+            return
+        }
+
+        var dateString = "无"
+        if dateBtn.title(for: .normal) == "点击添加日期" && !dealStatusBtn.title(for: .normal)!.contains("计划") {
             GSTool.show(text: "请选择购买日期")
             return
         }
 
+
         if buyPriceTF.text?.count == 0 {
-            GSTool.show(text: "请输入购买价格")
+            GSTool.show(text: "请输入\(dealStr!)价格")
             return
         }
 
         if buyCountTF.text?.count == 0 {
-            GSTool.show(text: "请输入购买数量")
-            return
-        }
-
-        if dealStatusBtn.title(for: .normal) == "点击选择交易状态" {
-            GSTool.show(text: "请选择交易状态")
+            GSTool.show(text: "请输入\(dealStr!)数量")
             return
         }
 
         var dealStatus = DealStatusType.underway
         if dealStatusBtn.title(for: .normal)!.contains("1"){
             dealStatus = .underway
+            dateString = dateBtn.title(for: .normal)!
         }
         if dealStatusBtn.title(for: .normal)!.contains("2"){
             dealStatus = .finish
+            dateString = dateBtn.title(for: .normal)!
         }
         if dealStatusBtn.title(for: .normal)!.contains("3"){
             dealStatus = .plan
+            dateString = "无"
         }
 
         let dealModel = FundDealModel()
         dealModel.fundName = baseModel?.fundName ?? ""
         dealModel.fundCode = baseModel?.fundCode ?? ""
-        dealModel.buyPrice = buyPriceTF.text ?? ""
-        dealModel.buyCount = buyCountTF.text ?? ""
-        dealModel.dealType = DealType.initialBuy.rawValue
+        dealModel.fatherID = baseModel?.dealID ?? ""
+        dealModel.dealID = GSTool.getTimeStamp()
+        dealModel.dealType = dealType.rawValue
         dealModel.dealStatus = dealStatus.rawValue
-        dealModel.buyID = GSTool.getTimeStamp()
+        dealModel.addDate = dateString
+        if dealType == .buy {
+            dealModel.buyPrice = buyPriceTF.text ?? ""
+            dealModel.buyCount = buyCountTF.text ?? ""
+        }else{
+            dealModel.sellPrice = buyPriceTF.text ?? ""
+            dealModel.sellCount = buyCountTF.text ?? ""
+        }
 
         DBManager.shareManager.insert(object: dealModel)
-
+        navigationController?.popViewController(animated: true)
     }
 
     //选择交易状态
     @objc func selectDealStatusAction() {
-        GSTool.showSheet(title: "请选择交易状态" ,titleArray: ["1：进行中", "2：已结束", "3：计划"], currentVC: self) { title in
+        GSTool.showSheet(title: "请选择交易状态" ,titleArray: [ "3：计划中", "2：已结束"], currentVC: self) { title in
             self.dealStatusBtn.setTitle(title, for: .normal)
         }
     }

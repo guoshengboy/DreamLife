@@ -28,7 +28,8 @@ class FundDealModel: TableCodable {
     var addDate: String = ""
     var dealType: Int = DealType.initialBuy.rawValue //交易类型
     var dealStatus:Int = DealStatusType.underway.rawValue //交易状态
-    var buyID: String = ""//针对够买的交易会生成唯一标识、针对卖来说 用来寻找属于哪一个购买操作
+    var dealID: String = ""//交易 ID ，创建记录生成的唯一标识
+    var fatherID: String = "" //只针对买和卖、初始买为空
     var isFirstInitialBuy: Bool = false
 
     /****初始买****/
@@ -50,7 +51,8 @@ class FundDealModel: TableCodable {
         case addDate = "addDate"
         case dealType = "dealType"
         case dealStatus = "dealStatus"
-        case buyID = "buyID"
+        case dealID = "dealID"
+        case fatherID = "fatherID"
         case initBuyCount = "initBuyCount"
         case buyPrice = "buyPrice"
         case buyCount = "buyCount"
@@ -65,7 +67,8 @@ class FundDealModel: TableCodable {
             BindColumnConstraint(addDate, isNotNull: true, defaultTo: "")
             BindColumnConstraint(dealType, isNotNull: true, defaultTo: 1)
             BindColumnConstraint(dealStatus, isNotNull: true, defaultTo: 1)
-            BindColumnConstraint(buyID, isNotNull: true, defaultTo: "")
+            BindColumnConstraint(dealID, isNotNull: true, defaultTo: "")
+            BindColumnConstraint(fatherID, isNotNull: true, defaultTo: "")
             BindColumnConstraint(initBuyCount, isNotNull: true, defaultTo: "0")
             BindColumnConstraint(buyPrice, isNotNull: true, defaultTo: "0")
             BindColumnConstraint(buyCount, isNotNull: true, defaultTo: "0")
@@ -85,7 +88,7 @@ class FundDealModel: TableCodable {
         return true
     }
 
-    ///
+    
     static func getFirstInitialBuy(code: String) -> FundDealModel? {
         //先获取初始买的数据(进行中)
         let initBuyArray = DBManager.shareManager.getObjects(cls: self, where: FundDealModel.Properties.fundCode == code && FundDealModel.Properties.dealType == DealType.initialBuy.rawValue && FundDealModel.Properties.dealStatus == DealStatusType.underway.rawValue && FundDealModel.Properties.isFirstInitialBuy == true)
@@ -93,6 +96,16 @@ class FundDealModel: TableCodable {
             return nil
         }
         return initBuyArray[0]
+    }
+
+    static func getSubarray(model: FundDealModel) -> [FundDealModel] {
+        let array = DBManager.shareManager.getObjects(cls: self, where: FundDealModel.Properties.fatherID == model.dealID && (FundDealModel.Properties.dealType == DealType.buy.rawValue ||
+            FundDealModel.Properties.dealType == DealType.sell.rawValue) && FundDealModel.Properties.dealStatus == DealStatusType.plan.rawValue)
+        return array.sorted { model1, model2 in
+            let price1 = model1.dealType == DealType.buy.rawValue ? (Double(model1.buyPrice) ?? 0) : (Double(model1.sellPrice) ?? 0)
+            let price2 = model2.dealType == DealType.buy.rawValue ? (Double(model2.buyPrice) ?? 0) : (Double(model2.buyPrice) ?? 0)
+            return price1 > price2
+        }
     }
 }
 

@@ -53,4 +53,8 @@ class DBManager: NSObject {
         let objects: [T]? = try? db.getObjects(fromTable: tableString, where: condition)
         return objects ?? []
     }
+
+    func deleteObject(tableName: String, where condition: Condition? = nil ) {
+        try? db.delete(fromTable: tableName, where: condition)
+    }
 }

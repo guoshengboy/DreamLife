@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toaster
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
+        //跟视图设置
         window = UIWindow()
         window?.frame = UIScreen.main.bounds
         window?.backgroundColor = UIColor.white
