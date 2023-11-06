@@ -24,7 +24,7 @@ class DealViewController: BaseViewController {
             }
         }
     }
-
+    var lastModel: FundDealModel?
     var date: String = ""
     var price: Double = 0
     var count: Int = 0
@@ -74,7 +74,9 @@ class DealViewController: BaseViewController {
     }
 
     func updateData() {
-        
+        if dealType == .initialBuy {
+            lastModel = FundDealModel.getInitialBuyOfLowestPrice(code: baseMolde?.fundCode ?? "")
+        }
     }
 
     @objc func addFundAction() {
@@ -97,15 +99,19 @@ extension DealViewController: UITableViewDelegate, UITableViewDataSource {
         let dic = self.titleArray[indexPath.row]
         if dic["cell"] == "TV" {
             guard let cell = Bundle.main.loadNibNamed("DealCell", owner: nil)?[0] as? DealCell else {return UITableViewCell()}
+            cell.selectionStyle = .none
             return cell
         }else if dic["cell"] == "TF" {
             guard let cell = Bundle.main.loadNibNamed("DealCell", owner: nil)?[1] as? DealCell else {return UITableViewCell()}
+            cell.selectionStyle = .none
             return cell
         }else if dic["cell"] == "TB" {
             guard let cell = Bundle.main.loadNibNamed("DealCell", owner: nil)?[2] as? DealCell else {return UITableViewCell()}
+            cell.selectionStyle = .none
             return cell
         }else if dic["cell"] == "TC" {
             guard let cell = Bundle.main.loadNibNamed("DealCell", owner: nil)?[3] as? DealCell else {return UITableViewCell()}
+            cell.selectionStyle = .none
             return cell
         }
         return UITableViewCell()
