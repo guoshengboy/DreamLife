@@ -20,6 +20,9 @@
 		8BB50F212AEA6EED00DA148B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB50F202AEA6EED00DA148B /* BaseViewController.swift */; };
 		8BB50F282AEB4A2C00DA148B /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB50F272AEB4A2C00DA148B /* DBManager.swift */; };
 		8BB50F2B2AEB9F3A00DA148B /* GSTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB50F2A2AEB9F3A00DA148B /* GSTool.swift */; };
+		8BC88A412AF87A7C001F1A3F /* DealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC88A402AF87A7C001F1A3F /* DealViewController.swift */; };
+		8BC88A432AF87B93001F1A3F /* DealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC88A422AF87B93001F1A3F /* DealCell.swift */; };
+		8BC88A452AF87BB5001F1A3F /* DealCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BC88A442AF87BB5001F1A3F /* DealCell.xib */; };
 		8BD728062AEF3E5200CE0F34 /* FundDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD728052AEF3E5100CE0F34 /* FundDetailViewController.swift */; };
 		8BD728082AEF414400CE0F34 /* FundDealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD728072AEF414400CE0F34 /* FundDealViewController.swift */; };
 		8BD7280A2AEF420E00CE0F34 /* FundDealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD728092AEF420E00CE0F34 /* FundDealModel.swift */; };
@@ -45,6 +48,9 @@
 		8BB50F202AEA6EED00DA148B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		8BB50F272AEB4A2C00DA148B /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		8BB50F2A2AEB9F3A00DA148B /* GSTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSTool.swift; sourceTree = "<group>"; };
+		8BC88A402AF87A7C001F1A3F /* DealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealViewController.swift; sourceTree = "<group>"; };
+		8BC88A422AF87B93001F1A3F /* DealCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealCell.swift; sourceTree = "<group>"; };
+		8BC88A442AF87BB5001F1A3F /* DealCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DealCell.xib; sourceTree = "<group>"; };
 		8BD728052AEF3E5100CE0F34 /* FundDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundDetailViewController.swift; sourceTree = "<group>"; };
 		8BD728072AEF414400CE0F34 /* FundDealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundDealViewController.swift; sourceTree = "<group>"; };
 		8BD728092AEF420E00CE0F34 /* FundDealModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FundDealModel.swift; sourceTree = "<group>"; };
@@ -135,6 +141,8 @@
 				8BB50F192AEA554B00DA148B /* HomeFundCell.swift */,
 				8BD728112AF0964500CE0F34 /* DealInitialBuyCell.swift */,
 				8BD728132AF0965E00CE0F34 /* DealInitialBuyCell.xib */,
+				8BC88A422AF87B93001F1A3F /* DealCell.swift */,
+				8BC88A442AF87BB5001F1A3F /* DealCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -148,6 +156,7 @@
 				8BD728072AEF414400CE0F34 /* FundDealViewController.swift */,
 				8BD7280F2AEF9C4500CE0F34 /* InitialBuyViewController.swift */,
 				8BD7280D2AEF9C1300CE0F34 /* BuyOrSellViewController.swift */,
+				8BC88A402AF87A7C001F1A3F /* DealViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -266,6 +275,7 @@
 				8BB50F072AE9F9C600DA148B /* Assets.xcassets in Resources */,
 				8BB50F052AE9F9C400DA148B /* Main.storyboard in Resources */,
 				8BD728142AF0965E00CE0F34 /* DealInitialBuyCell.xib in Resources */,
+				8BC88A452AF87BB5001F1A3F /* DealCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,7 +335,9 @@
 				8BB50F1A2AEA554B00DA148B /* HomeFundCell.swift in Sources */,
 				8BB50F1C2AEA604D00DA148B /* FundModel.swift in Sources */,
 				8BD7280A2AEF420E00CE0F34 /* FundDealModel.swift in Sources */,
+				8BC88A432AF87B93001F1A3F /* DealCell.swift in Sources */,
 				8BD728102AEF9C4500CE0F34 /* InitialBuyViewController.swift in Sources */,
+				8BC88A412AF87A7C001F1A3F /* DealViewController.swift in Sources */,
 				8BB50F212AEA6EED00DA148B /* BaseViewController.swift in Sources */,
 				8BB50F2B2AEB9F3A00DA148B /* GSTool.swift in Sources */,
 				8BD7280E2AEF9C1300CE0F34 /* BuyOrSellViewController.swift in Sources */,

@@ -7,6 +7,7 @@
 
 import UIKit
 import Toaster
+import IQKeyboardManager
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        //键盘设置
+        IQKeyboardManager.shared().isEnabled = true
 
         //跟视图设置
         window = UIWindow()

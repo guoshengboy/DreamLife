@@ -19,7 +19,7 @@ class FundDetailViewController: BaseViewController {
         $0.register(UITableViewCell.self, forCellReuseIdentifier: "FundDetailCell")
     }
 
-    lazy var titleArray = ["基金配置", "全部"]
+    lazy var titleArray = ["基金总账", "网格交易", "波段交易"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +44,7 @@ extension FundDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let title = titleArray[indexPath.row]
-        if title == "全部" || title == "进行中" || title == "已结束"{
+        if title == "波段交易"{
             let vc = FundDealViewController()
             vc.dealSearchType = title
             vc.model = model

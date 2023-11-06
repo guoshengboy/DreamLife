@@ -107,5 +107,8 @@ class FundDealModel: TableCodable {
             return price1 > price2
         }
     }
+
+    //获取初始买
+
 }
 

@@ -13,5 +13,8 @@ target 'DreamLife' do
   pod 'ObjectMapper', '~> 3.5' #model解析
   pod 'DatePickerDialog' #日历
   pod 'Toaster'
+  pod 'IQKeyboardManager' #键盘
+  pod 'RxSwift', '6.6.0'
+  pod 'RxCocoa', '6.6.0'
   
 end
