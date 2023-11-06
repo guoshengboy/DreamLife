@@ -7,6 +7,7 @@
 
 import Foundation
 import Toaster
+import DatePickerDialog
 
 struct GSTool {
     ///需要传对象
@@ -34,6 +35,30 @@ struct GSTool {
         alertCtrl.addAction(cancelAction)
 
         currentVC.present(alertCtrl, animated: true)
+    }
+
+    ///选择交易状态
+    static func showDealStatus(currentVC: UIViewController, clickBlock:@escaping (String, DealStatusType)->()) {
+        showSheet(title: "请选择交易状态" ,titleArray: ["进行中", "已结束", "计划中"], currentVC: currentVC) { title in
+            if title == "进行中" {
+                clickBlock(title, .underway)
+            }else if title == "已结束"{
+                clickBlock(title, .finish)
+            }else if title == "计划中"{
+                clickBlock(title, .plan)
+            }
+        }
+    }
+
+    static func showDate(selectDateBlock:@escaping (String)->()) {
+        DatePickerDialog().show("请选择日期") {  date in
+            if let dt = date {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "YYYY-MM-dd"
+                let dateString = formatter.string(from: dt)
+                selectDateBlock(dateString)
+            }
+        }
     }
 
     static func getTimeStamp() -> String {

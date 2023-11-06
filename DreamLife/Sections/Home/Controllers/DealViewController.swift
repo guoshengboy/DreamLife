@@ -9,10 +9,17 @@ import Foundation
 import Then
 import SnapKit
 
+enum DealAddType {
+    case add
+    case edit
+}
+
 class DealViewController: BaseViewController {
 
+    var model: FundDealModel?
     var baseMolde: FundModel?
-    var dealType: DealType = .initialBuy
+    var addType: DealAddType = .add
+    var dealType: DealType = .initialBuy 
     var pageTitle: String {
         get {
             if dealType == .initialBuy {
@@ -29,23 +36,7 @@ class DealViewController: BaseViewController {
     var price: Double = 0
     var count: Int = 0
 
-    var titleArray: [[String:String]] {
-        get {
-            if dealType == .initialBuy || dealType == .buy {
-                return [["title": "基金名称", "cell": "TV", "value": ""],
-                        ["title": "交易状态", "cell": "TB", "value": ""],
-                        ["title": "买入日期", "cell": "TB", "value": ""],
-                        ["title": "买入价格", "cell": "TC", "value": ""],
-                        ["title": "买入数量", "cell": "TF", "value": ""]]
-            }else {
-                return  [["title": "基金名称", "cell": "TV", "value": ""],
-                         ["title": "交易状态", "cell": "TB", "value": ""],
-                         ["title": "卖出日期", "cell": "TB", "value": ""],
-                         ["title": "卖出价格", "cell": "TC", "value": ""],
-                         ["title": "卖出数量", "cell": "TF", "value": ""]]
-            }
-        }
-    }
+    var titleArray: [[String:String]] = []
 
     lazy var tableView: UITableView = UITableView(frame: CGRect.zero, style: .plain).then {
         $0.delegate = self
@@ -74,9 +65,34 @@ class DealViewController: BaseViewController {
     }
 
     func updateData() {
-        if dealType == .initialBuy {
-            lastModel = FundDealModel.getInitialBuyOfLowestPrice(code: baseMolde?.fundCode ?? "")
+
+        //添加
+        if addType == .add{
+            model = FundDealModel()
+            model?.fundName = baseMolde?.fundName ?? ""
+            model?.fundCode = baseMolde?.fundCode ?? ""
+            model?.dealType = dealType.rawValue
+
+            if dealType == .initialBuy {
+                lastModel = FundDealModel.getInitialBuyOfLowestPrice(code: baseMolde?.fundCode ?? "")
+            }
         }
+
+//        if dealType == .initialBuy || dealType == .buy {
+//            return [["title": "基金名称", "cell": "TV", "value": ""],
+//                    ["title": "交易状态", "cell": "TB", "value": ""],
+//                    ["title": "买入日期", "cell": "TB", "value": ""],
+//                    ["title": "买入价格", "cell": "TC", "value": ""],
+//                    ["title": "买入数量", "cell": "TF", "value": ""]]
+//        }else {
+//            return  [["title": "基金名称", "cell": "TV", "value": ""],
+//                     ["title": "交易状态", "cell": "TB", "value": ""],
+//                     ["title": "卖出日期", "cell": "TB", "value": ""],
+//                     ["title": "卖出价格", "cell": "TC", "value": ""],
+//                     ["title": "卖出数量", "cell": "TF", "value": ""]]
+//        }
+
+        tableView.reloadData()
     }
 
     @objc func addFundAction() {
