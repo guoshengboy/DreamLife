@@ -14,7 +14,7 @@ struct DealCellModel {
     var value: String = ""
     var value2: String = ""
     var placeholder: String = ""
-    var keyboardType: UIKeyboardType?
+    var keyboardType: UIKeyboardType = .default
 
 
     static func getModelWithTV(title: String, value: String) -> DealCellModel {
@@ -25,7 +25,7 @@ struct DealCellModel {
         return model
     }
 
-    static func getModelWithTF(title: String, value: String, placeholder: String, keyboardType: UIKeyboardType?) -> DealCellModel {
+    static func getModelWithTF(title: String, value: String, placeholder: String, keyboardType: UIKeyboardType = .default) -> DealCellModel {
         var model = DealCellModel()
         model.cellType = "TF"
         model.title = title
@@ -43,12 +43,14 @@ struct DealCellModel {
         return model
     }
 
-    static func getModelWithTC(title: String, value: String, value2: String) -> DealCellModel {
+    static func getModelWithTC(title: String, value: String, value2: String, placeholder: String, keyboardType: UIKeyboardType = .default) -> DealCellModel {
         var model = DealCellModel()
-        model.cellType = "TB"
+        model.cellType = "TC"
         model.title = title
         model.value = value
         model.value2 = value2
+        model.placeholder = placeholder
+        model.keyboardType = keyboardType
         return model
     }
 }

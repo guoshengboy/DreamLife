@@ -19,21 +19,11 @@ class DealCell: UITableViewCell {
     @IBOutlet weak var TVTitleLab: UILabel!
     @IBOutlet weak var TVValueLab: UILabel!
 
-    func setupCellWithTV(title: String, value: String) {
-        TVTitleLab.text = title
-        TVValueLab.text = value
-    }
-
     //MARK: DealCellTF
 
     @IBOutlet weak var TFTitleLab: UILabel!
     @IBOutlet weak var TFTextFiled: UITextField!
 
-    func setupCellWithTF(title: String, placeholder: String, tfText: String = "") {
-        TFTitleLab.text = title
-        TFTextFiled.text = tfText
-        TFTextFiled.placeholder = placeholder
-    }
 
     //MARK: DealCellTC
 
@@ -52,7 +42,19 @@ class DealCell: UITableViewCell {
             TVTitleLab.text = model.title
             TVValueLab.text = model.value
         }else if model.cellType == "TF" {
-
+            TFTitleLab.text = model.title
+            TFTextFiled.text = model.value
+            TFTextFiled.placeholder = model.placeholder
+            TFTextFiled.keyboardType = model.keyboardType
+        }else if model.cellType == "TB" {
+            TBTitleLab.text = model.title
+            TBBtn.setTitle(model.value, for: .normal)
+        }else if model.cellType == "TC" {
+            TCTitleLab.text = model.title
+            TCTextField.text = model.value
+            TCTextField.placeholder = model.placeholder
+            TCTextField.keyboardType = model.keyboardType
+            TCResultLab.text = model.value2
         }
 
     }

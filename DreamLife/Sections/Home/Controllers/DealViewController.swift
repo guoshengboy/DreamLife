@@ -68,28 +68,10 @@ class DealViewController: BaseViewController {
 
     func updateData() {
 
-        model = FundDealModel()
-
-        //添加
-        if addType == .add{
-            model?.fundName = baseMolde?.fundName ?? ""
-            model?.fundCode = baseMolde?.fundCode ?? ""
-            model?.dealType = dealType.rawValue
-
-            //初始买
-            if dealType == .initialBuy {
-                lastModel = FundDealModel.getInitialBuyOfLowestPrice(code: baseMolde?.fundCode ?? "")
-            }
-        }
-
-        var status: String = "请选择交易状态"
-        var date: String = "请选择日期"
-        var lastPrice: String = "无"
-
-        tableView.reloadData()
+        getInitBuyData()
     }
 
-    //初始买
+    //初始买数据
     func getInitBuyData() {
         if (addType == .add){
 
@@ -98,7 +80,7 @@ class DealViewController: BaseViewController {
             dealCellModelList.append(DealCellModel.getModelWithTB(title: "购买状态：", value: "请选择当前状态"))
             dealCellModelList.append(DealCellModel.getModelWithTB(title: "购买日期：", value: "请选择日期"))
             dealCellModelList.append(DealCellModel.getModelWithTV(title: "参考价格公式：", value: (lowPriceModel?.calculateFormula.count == 0 ? "无" : lowPriceModel?.calculateFormula) ?? ""))
-            dealCellModelList.append(DealCellModel.getModelWithTC(title: "购买价格：", value: "", value2: ""))
+            dealCellModelList.append(DealCellModel.getModelWithTC(title: "购买价格：", value: "", value2: "0.0", placeholder: "请输入价格比例"))
             dealCellModelList.append(DealCellModel.getModelWithTF(title: "购买数量", value: "", placeholder: "请输入购买数量", keyboardType: .numberPad))
 
         }
@@ -127,18 +109,22 @@ extension DealViewController: UITableViewDelegate, UITableViewDataSource {
         if model.cellType == "TV" {
             guard let cell = Bundle.main.loadNibNamed("DealCell", owner: nil)?[0] as? DealCell else {return UITableViewCell()}
             cell.selectionStyle = .none
+            cell.setupCell(model: model)
             return cell
         }else if model.cellType == "TF" {
             guard let cell = Bundle.main.loadNibNamed("DealCell", owner: nil)?[1] as? DealCell else {return UITableViewCell()}
             cell.selectionStyle = .none
+            cell.setupCell(model: model)
             return cell
         }else if model.cellType == "TB" {
             guard let cell = Bundle.main.loadNibNamed("DealCell", owner: nil)?[2] as? DealCell else {return UITableViewCell()}
             cell.selectionStyle = .none
+            cell.setupCell(model: model)
             return cell
         }else if model.cellType == "TC" {
             guard let cell = Bundle.main.loadNibNamed("DealCell", owner: nil)?[3] as? DealCell else {return UITableViewCell()}
             cell.selectionStyle = .none
+            cell.setupCell(model: model)
             return cell
         }
         return UITableViewCell()
