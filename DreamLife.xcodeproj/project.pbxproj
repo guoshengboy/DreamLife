@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		252B39EDFDC76153475B1F5E /* Pods_DreamLife.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64AD2B4F72C7596ADF235131 /* Pods_DreamLife.framework */; };
+		8BA864442B01F56900DFC0A9 /* DealCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA864432B01F56900DFC0A9 /* DealCellModel.swift */; };
 		8BB50EFE2AE9F9C400DA148B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB50EFD2AE9F9C400DA148B /* AppDelegate.swift */; };
 		8BB50F022AE9F9C400DA148B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB50F012AE9F9C400DA148B /* ViewController.swift */; };
 		8BB50F052AE9F9C400DA148B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BB50F032AE9F9C400DA148B /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		64AD2B4F72C7596ADF235131 /* Pods_DreamLife.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DreamLife.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BA864432B01F56900DFC0A9 /* DealCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealCellModel.swift; sourceTree = "<group>"; };
 		8BB50EFA2AE9F9C400DA148B /* DreamLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DreamLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB50EFD2AE9F9C400DA148B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BB50F012AE9F9C400DA148B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				8BB50F1B2AEA604D00DA148B /* FundModel.swift */,
 				8BD728092AEF420E00CE0F34 /* FundDealModel.swift */,
+				8BA864432B01F56900DFC0A9 /* DealCellModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				8BB50F1A2AEA554B00DA148B /* HomeFundCell.swift in Sources */,
 				8BB50F1C2AEA604D00DA148B /* FundModel.swift in Sources */,
 				8BD7280A2AEF420E00CE0F34 /* FundDealModel.swift in Sources */,
+				8BA864442B01F56900DFC0A9 /* DealCellModel.swift in Sources */,
 				8BC88A432AF87B93001F1A3F /* DealCell.swift in Sources */,
 				8BD728102AEF9C4500CE0F34 /* InitialBuyViewController.swift in Sources */,
 				8BC88A412AF87A7C001F1A3F /* DealViewController.swift in Sources */,

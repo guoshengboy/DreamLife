@@ -141,21 +141,24 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
-                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="1wI-p1-WFS">
-                        <rect key="frame" x="178" y="6" width="94" height="32"/>
-                    </stepper>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAE-CU-Y2U">
+                        <rect key="frame" x="180" y="11.666666666666664" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="bAE-CU-Y2U" firstAttribute="leading" secondItem="nKe-zc-2o2" secondAttribute="trailing" constant="10" id="2ce-FX-axB"/>
                     <constraint firstItem="OYd-MI-rBt" firstAttribute="leading" secondItem="X1L-r1-9qc" secondAttribute="leading" constant="10" id="Hi4-wg-53V"/>
                     <constraint firstItem="OYd-MI-rBt" firstAttribute="centerY" secondItem="X1L-r1-9qc" secondAttribute="centerY" id="I59-oB-kl2"/>
-                    <constraint firstItem="1wI-p1-WFS" firstAttribute="centerY" secondItem="X1L-r1-9qc" secondAttribute="centerY" id="NNF-Vp-PQf"/>
                     <constraint firstItem="nKe-zc-2o2" firstAttribute="leading" secondItem="OYd-MI-rBt" secondAttribute="trailing" constant="10" id="ctK-sS-6ld"/>
                     <constraint firstItem="nKe-zc-2o2" firstAttribute="centerY" secondItem="X1L-r1-9qc" secondAttribute="centerY" id="phZ-cQ-fPn"/>
-                    <constraint firstItem="1wI-p1-WFS" firstAttribute="leading" secondItem="nKe-zc-2o2" secondAttribute="trailing" constant="8" symbolic="YES" id="zzw-fH-vLL"/>
+                    <constraint firstItem="bAE-CU-Y2U" firstAttribute="centerY" secondItem="nKe-zc-2o2" secondAttribute="centerY" id="z27-eK-laJ"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="TCStepper" destination="1wI-p1-WFS" id="9hk-a9-4dZ"/>
+                <outlet property="TCResultLab" destination="bAE-CU-Y2U" id="qZL-Mq-sih"/>
                 <outlet property="TCTextField" destination="nKe-zc-2o2" id="8Hq-5s-0BE"/>
                 <outlet property="TCTitleLab" destination="OYd-MI-rBt" id="jnj-Zw-t1d"/>
             </connections>

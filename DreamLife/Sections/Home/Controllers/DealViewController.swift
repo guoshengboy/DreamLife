@@ -16,10 +16,10 @@ enum DealAddType {
 
 class DealViewController: BaseViewController {
 
-    var model: FundDealModel?
+    var model: FundDealModel? //编辑会传过来、否则自己创建用于添加
     var baseMolde: FundModel?
     var addType: DealAddType = .add
-    var dealType: DealType = .initialBuy 
+    var dealType: DealType = .initialBuy
     var pageTitle: String {
         get {
             if dealType == .initialBuy {
@@ -31,12 +31,14 @@ class DealViewController: BaseViewController {
             }
         }
     }
+
+
     var lastModel: FundDealModel?
     var date: String = ""
     var price: Double = 0
     var count: Int = 0
 
-    var titleArray: [[String:String]] = []
+    var dealCellModelList: [DealCellModel] = []
 
     lazy var tableView: UITableView = UITableView(frame: CGRect.zero, style: .plain).then {
         $0.delegate = self
@@ -66,31 +68,40 @@ class DealViewController: BaseViewController {
 
     func updateData() {
 
+        model = FundDealModel()
+
         //添加
         if addType == .add{
-            model = FundDealModel()
             model?.fundName = baseMolde?.fundName ?? ""
             model?.fundCode = baseMolde?.fundCode ?? ""
             model?.dealType = dealType.rawValue
 
+            //初始买
             if dealType == .initialBuy {
                 lastModel = FundDealModel.getInitialBuyOfLowestPrice(code: baseMolde?.fundCode ?? "")
             }
         }
 
-//        if dealType == .initialBuy || dealType == .buy {
-//            return [["title": "基金名称", "cell": "TV", "value": ""],
-//                    ["title": "交易状态", "cell": "TB", "value": ""],
-//                    ["title": "买入日期", "cell": "TB", "value": ""],
-//                    ["title": "买入价格", "cell": "TC", "value": ""],
-//                    ["title": "买入数量", "cell": "TF", "value": ""]]
-//        }else {
-//            return  [["title": "基金名称", "cell": "TV", "value": ""],
-//                     ["title": "交易状态", "cell": "TB", "value": ""],
-//                     ["title": "卖出日期", "cell": "TB", "value": ""],
-//                     ["title": "卖出价格", "cell": "TC", "value": ""],
-//                     ["title": "卖出数量", "cell": "TF", "value": ""]]
-//        }
+        var status: String = "请选择交易状态"
+        var date: String = "请选择日期"
+        var lastPrice: String = "无"
+
+        tableView.reloadData()
+    }
+
+    //初始买
+    func getInitBuyData() {
+        if (addType == .add){
+
+            let lowPriceModel =  FundDealModel.getInitialBuyOfLowestPrice(code: baseMolde?.fundCode ?? "")
+            dealCellModelList.append(DealCellModel.getModelWithTV(title: "基金名称：", value: baseMolde?.fundName ?? ""))
+            dealCellModelList.append(DealCellModel.getModelWithTB(title: "购买状态：", value: "请选择当前状态"))
+            dealCellModelList.append(DealCellModel.getModelWithTB(title: "购买日期：", value: "请选择日期"))
+            dealCellModelList.append(DealCellModel.getModelWithTV(title: "参考价格公式：", value: (lowPriceModel?.calculateFormula.count == 0 ? "无" : lowPriceModel?.calculateFormula) ?? ""))
+            dealCellModelList.append(DealCellModel.getModelWithTC(title: "购买价格：", value: "", value2: ""))
+            dealCellModelList.append(DealCellModel.getModelWithTF(title: "购买数量", value: "", placeholder: "请输入购买数量", keyboardType: .numberPad))
+
+        }
 
         tableView.reloadData()
     }
@@ -108,24 +119,24 @@ extension DealViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titleArray.count
+        return dealCellModelList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let dic = self.titleArray[indexPath.row]
-        if dic["cell"] == "TV" {
+        let model = dealCellModelList[indexPath.row]
+        if model.cellType == "TV" {
             guard let cell = Bundle.main.loadNibNamed("DealCell", owner: nil)?[0] as? DealCell else {return UITableViewCell()}
             cell.selectionStyle = .none
             return cell
-        }else if dic["cell"] == "TF" {
+        }else if model.cellType == "TF" {
             guard let cell = Bundle.main.loadNibNamed("DealCell", owner: nil)?[1] as? DealCell else {return UITableViewCell()}
             cell.selectionStyle = .none
             return cell
-        }else if dic["cell"] == "TB" {
+        }else if model.cellType == "TB" {
             guard let cell = Bundle.main.loadNibNamed("DealCell", owner: nil)?[2] as? DealCell else {return UITableViewCell()}
             cell.selectionStyle = .none
             return cell
-        }else if dic["cell"] == "TC" {
+        }else if model.cellType == "TC" {
             guard let cell = Bundle.main.loadNibNamed("DealCell", owner: nil)?[3] as? DealCell else {return UITableViewCell()}
             cell.selectionStyle = .none
             return cell

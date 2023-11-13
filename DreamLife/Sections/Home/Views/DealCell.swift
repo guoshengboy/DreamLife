@@ -39,13 +39,21 @@ class DealCell: UITableViewCell {
 
     @IBOutlet weak var TCTitleLab: UILabel!
     @IBOutlet weak var TCTextField: UITextField!
-    @IBOutlet weak var TCStepper: UIStepper!
-
+    @IBOutlet weak var TCResultLab: UILabel!
 
 
     //MARK: DealCellTB
     @IBOutlet weak var TBTitleLab: UILabel!
     @IBOutlet weak var TBBtn: UIButton!
 
-    
+
+    func setupCell(model: DealCellModel)  {
+        if model.cellType == "TV" {
+            TVTitleLab.text = model.title
+            TVValueLab.text = model.value
+        }else if model.cellType == "TF" {
+
+        }
+
+    }
 }

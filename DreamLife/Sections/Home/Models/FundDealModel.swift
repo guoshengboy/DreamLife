@@ -31,8 +31,9 @@ class FundDealModel: TableCodable {
     var dealID: String = ""//交易 ID ，创建记录生成的唯一标识
     var fatherID: String = "" //只针对买和卖、初始买为空
     var isFirstInitialBuy: Bool = false
+    var calculateFormula: String = "" //计算公式（用于记录上一个买和卖的计算公式）
 
-    /****初始买****/
+    /****初始买、买****/
     var initBuyCount: Int = 0 //初始购买的个数 这个不会进行加减操作 只是记录
 
     /****买****/
@@ -59,6 +60,7 @@ class FundDealModel: TableCodable {
         case sellPrice = "sellPrice"
         case sellCount = "sellCount"
         case isFirstInitialBuy = "isFirstInitialBuy"
+        case calculateFormula = "calculateFormula"
 
 
         static let objectRelationalMapping = TableBinding(CodingKeys.self){
@@ -75,6 +77,7 @@ class FundDealModel: TableCodable {
             BindColumnConstraint(sellPrice, isNotNull: true, defaultTo: "0")
             BindColumnConstraint(sellCount, isNotNull: true, defaultTo: "0")
             BindColumnConstraint(isFirstInitialBuy, isNotNull: true, defaultTo: false)
+            BindColumnConstraint(calculateFormula, isNotNull: true, defaultTo: "")
         }
     }
 
@@ -122,7 +125,6 @@ class FundDealModel: TableCodable {
         }
         return list[0]
     }
-
 
 }
 
