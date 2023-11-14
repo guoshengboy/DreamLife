@@ -126,5 +126,20 @@ class FundDealModel: TableCodable {
         return list[0]
     }
 
+    //获取最高价格的初始买（状态为：交易中， 价格：最高）
+    static func getInitialBuyOfHighestPrice(code: String) -> FundDealModel? {
+        let array = DBManager.shareManager.getObjects(cls: self, where: FundDealModel.Properties.fundCode == code && FundDealModel.Properties.dealStatus == DealStatusType.underway.rawValue)
+        if array.count == 0{
+            return nil
+        }
+        //排序  从低价到高价
+        let list = array.sorted { model1, model2 in
+            let price1 = model1.dealType == DealType.buy.rawValue ? (Double(model1.buyPrice) ?? 0) : (Double(model1.sellPrice) ?? 0)
+            let price2 = model2.dealType == DealType.buy.rawValue ? (Double(model2.buyPrice) ?? 0) : (Double(model2.buyPrice) ?? 0)
+            return price1 > price2
+        }
+        return list[0]
+    }
+
 }
 

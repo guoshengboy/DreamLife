@@ -71,6 +71,7 @@ class FundDealViewController: BaseViewController {
 
     @objc func addInitBuyAction() {
         let vc = DealViewController()
+        vc.baseMolde = model
         vc.dealType = .initialBuy
         navigationController?.pushViewController(vc, animated: true)
     }

@@ -8,17 +8,24 @@
 import Foundation
 import UIKit
 
-struct DealCellModel {
+enum  DealCellEventType{
+    case none //空
+    case date //点击日期
+    case status //交易状态
+}
+
+class DealCellModel {
     var cellType: String = ""
     var title: String = ""
     var value: String = ""
     var value2: String = ""
     var placeholder: String = ""
     var keyboardType: UIKeyboardType = .default
+    var eventType: DealCellEventType = .none
 
 
     static func getModelWithTV(title: String, value: String) -> DealCellModel {
-        var model = DealCellModel()
+        let model = DealCellModel()
         model.cellType = "TV"
         model.title = title
         model.value = value
@@ -26,7 +33,7 @@ struct DealCellModel {
     }
 
     static func getModelWithTF(title: String, value: String, placeholder: String, keyboardType: UIKeyboardType = .default) -> DealCellModel {
-        var model = DealCellModel()
+        let model = DealCellModel()
         model.cellType = "TF"
         model.title = title
         model.value = value
@@ -35,16 +42,17 @@ struct DealCellModel {
         return model
     }
 
-    static func getModelWithTB(title: String, value: String) -> DealCellModel {
-        var model = DealCellModel()
+    static func getModelWithTB(title: String, value: String, type: DealCellEventType) -> DealCellModel {
+        let model = DealCellModel()
         model.cellType = "TB"
         model.title = title
         model.value = value
+        model.eventType = type
         return model
     }
 
     static func getModelWithTC(title: String, value: String, value2: String, placeholder: String, keyboardType: UIKeyboardType = .default) -> DealCellModel {
-        var model = DealCellModel()
+        let model = DealCellModel()
         model.cellType = "TC"
         model.title = title
         model.value = value

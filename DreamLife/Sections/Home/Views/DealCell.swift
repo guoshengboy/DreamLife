@@ -9,10 +9,13 @@ import Foundation
 import UIKit
 
 protocol DealCellHandleProtocol {
-    
+    func clickBtn(btn: UIButton, model: DealCellModel)
 }
 
 class DealCell: UITableViewCell {
+
+    var delegate: DealCellHandleProtocol?
+    var currentModel: DealCellModel?
 
     //MARK: DealCell
     
@@ -36,8 +39,36 @@ class DealCell: UITableViewCell {
     @IBOutlet weak var TBTitleLab: UILabel!
     @IBOutlet weak var TBBtn: UIButton!
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        if self.TVTitleLab != nil{
+            self.TVTitleLab.adjustsFontSizeToFitWidth = true
+            self.TVTitleLab.minimumScaleFactor = 0.5
+        }
+
+        if self.TFTitleLab != nil{
+            self.TFTitleLab.adjustsFontSizeToFitWidth = true
+            self.TFTitleLab.minimumScaleFactor = 0.5
+        }
+
+        if self.TBTitleLab != nil{
+            self.TBTitleLab.adjustsFontSizeToFitWidth = true
+            self.TBTitleLab.minimumScaleFactor = 0.5
+        }
+
+        if self.TCTitleLab != nil{
+            self.TCTitleLab.adjustsFontSizeToFitWidth = true
+            self.TCTitleLab.minimumScaleFactor = 0.5
+        }
+    }
+
+    @IBAction func TBClickBtn(_ sender: Any) {
+        delegate?.clickBtn(btn: TBBtn, model: currentModel!)
+    }
 
     func setupCell(model: DealCellModel)  {
+        currentModel = model
         if model.cellType == "TV" {
             TVTitleLab.text = model.title
             TVValueLab.text = model.value
