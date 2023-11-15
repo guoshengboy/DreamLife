@@ -7,9 +7,13 @@
 
 import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
 
 protocol DealCellHandleProtocol {
     func clickBtn(btn: UIButton, model: DealCellModel)
+
+    func textFieldChanged(tf: UITextField, model: DealCellModel)
 }
 
 class DealCell: UITableViewCell {
@@ -50,6 +54,7 @@ class DealCell: UITableViewCell {
         if self.TFTitleLab != nil{
             self.TFTitleLab.adjustsFontSizeToFitWidth = true
             self.TFTitleLab.minimumScaleFactor = 0.5
+            TFTextFiled.rx.text.orEmpty.asObservable()
         }
 
         if self.TBTitleLab != nil{

@@ -174,5 +174,9 @@ extension DealViewController: DealCellHandleProtocol {
             }
         }
     }
+
+    func textFieldChanged(tf: UITextField, model: DealCellModel) {
+        
+    }
 }
 
