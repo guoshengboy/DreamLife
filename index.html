@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>自动跳转示例</title>
+    <script>
+        function detectDeviceType() {
+            let isMobile = false;
+
+            // 获取用户代理字符串  
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // 移动端设备的用户代理字符串中通常会包含这些关键词  
+            var mobileAgents = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod"];
+
+            // 遍历移动端设备的关键词数组，如果找到匹配项，则返回true  
+            for (var i = 0; i < mobileAgents.length; i++) {
+                if (userAgent.indexOf(mobileAgents[i]) > -1) {
+                    isMobile = true; // 是移动端  
+                    break;
+                }
+            }
+
+            return isMobile ? 'mobile' : 'pc';
+        }
+
+        function redirectTo() {
+            const deviceType = detectDeviceType();
+
+            if (deviceType === 'mobile') {
+                window.location.replace('https://rdc.smgtech.net/h5/');
+            } else {
+                window.location.replace('https://rdc.smgtech.net/web/');
+            }
+        }
+
+        // 页面加载完成后立即执行重定向逻辑
+        document.addEventListener('DOMContentLoaded', function () {
+            redirectTo();
+        });
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
